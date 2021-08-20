@@ -1,13 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Header from './components/Header'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.h1}>Pokédex</Text>
-      </View>
+      <Header/>
       <View style={styles.body}>
         <Text>Hello world</Text>
       </View>
@@ -22,20 +21,8 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center',
   },
-  header: {
-    flex: 1,
-    backgroundColor: 'red',
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 25,
-    borderBottomWidth: 15
-  },
   body: {
     flex: 5
-  },
-  h1: {
-    fontSize: 40
   }
 });
 
