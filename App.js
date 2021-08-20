@@ -3,10 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header';
 import PokemonList from './components/PokemonList';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
 
 const POKEMON_API_ENDPOINT = 'https://pokeapi.co/api/v2/';
 const FIRST_100_POKEMON_QUERY = 'pokemon?limit=100';
+
+//create stack object
+const Stack = createStackNavigator();
 
 export default function App() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -20,13 +25,26 @@ export default function App() {
     })
   }, [])
   return (
-    <View style={styles.container}>
+    <NavigationContainer style={styles.container}>
       <Header/>
       <View style={styles.body}>
-        <PokemonList list={pokemonList}/>
+        <Stack.Navigator
+        screenOptions={
+          {
+            headerShown: false
+          }
+        }
+        >
+          <Stack.Screen
+          name="Pokemon List"
+          children={()=>{
+            return <PokemonList list={pokemonList}/>
+          }}
+          />
+        </Stack.Navigator>
       </View>
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
 }
 
