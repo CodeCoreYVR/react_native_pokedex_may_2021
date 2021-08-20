@@ -12,7 +12,7 @@ function PokemonList({list, navigation}){
                         underlayColor='lightblue'
                         onPress={(event)=>{
                             // console.log(event)
-                            navigation.navigate("Pokemon Details")
+                            navigation.navigate("Pokemon Details", {pokemon})
                         }}
                         >
                             <View style={styles.pokemon}>
